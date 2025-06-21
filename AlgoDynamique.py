@@ -1,5 +1,5 @@
 import pandas as pd
-import csv
+import time
 
 def Algo_dynamique(capacite, elements):
     matrice = [[0 for _ in range(capacite +1)] for _ in range(len(elements)+1)]
@@ -19,18 +19,12 @@ def Algo_dynamique(capacite, elements):
     elements_selection  = []
 
     while n >= 0:
-        print(f" === n={n}, w={w}, matrice[n][w]={matrice[n][w]} ===")
         objet = elements[n-1]
         poids = int(objet[1])
         if matrice[n][w] == matrice[n-1][w - poids] + objet[2]:
-
-            #Print pour voir l'objet sélectionné et le poids restant. 
-            print(f"  -> On sélectionne {objet[0]} (poids={poids}, bénéfice={objet[2]})") 
-
             elements_selection.append(objet)
             w -= poids
         n -= 1
-        print(n) #Ici print pour voir la matrice descendre
     return matrice[-1][-1], elements_selection
 
 FACTEUR = 100
@@ -57,6 +51,7 @@ capacite = int(500 * FACTEUR)
 
 resultat_int, selection_int = Algo_dynamique(capacite, elements)
 
+
 benefice_optimal = resultat_int / FACTEUR
 poids_selection = sum(obj[1] for obj in selection_int) / FACTEUR
 selection = [(obj[0], obj[1]/FACTEUR, obj[2]/FACTEUR) for obj in selection_int]
@@ -65,7 +60,4 @@ print(f"coût total : {poids_selection}")
 print(f"profit : {benefice_optimal}")
 print("Actions choisies :", selection)
 
-# print("Valeur max :", resultat)
-# print("bénéfice recompté : ", sum(e[2] for e in selection))
-# print("Actions choisies :", sum(objet[1] for objet in selection))
 
