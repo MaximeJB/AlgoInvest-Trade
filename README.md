@@ -1,4 +1,4 @@
-# 💰 AlgoInvest-Trade
+# AlgoInvest-Trade
 
 ## 📊 Description du Projet
 AlgoInvest-Trade est une application Python d'optimisation de portefeuille d'investissement développée dans le cadre du projet #7 d'OpenClassrooms. Le projet implémente et compare deux approches algorithmiques pour résoudre le problème du sac à dos (knapsack problem) appliqué à la sélection d'actions financières.
