@@ -1,7 +1,23 @@
 import pandas as pd
-import time
 
-def Algo_dynamique(capacite, elements):
+
+def algo_dynamique(capacite, elements):
+    """
+    Résout le problème du sac à dos par programmation dynamique.
+    
+    Args:
+        capacite: Budget maximum en centimes (multiplié par FACTEUR)
+        elements: Liste de tuples (nom_action, coût, bénéfice)
+        
+    Returns:
+        Tuple contenant:
+        - Bénéfice total optimal (int)
+        - Liste des actions sélectionnées (list)
+        
+    Complexité:
+        Temps: O(n*W) où n=nombre d'actions, W=capacité
+        Espace: O(n*W) pour la matrice DP
+    """
     matrice = [[0 for _ in range(capacite +1)] for _ in range(len(elements)+1)]
 
     for i in range(1, len(elements) + 1):

@@ -1,9 +1,25 @@
-def algo_Force_Brute(capacite, actions, elements_selection = []):
+def algo_force_brute(capacite, actions, elements_selection = []):
+    """Résout le problème du sac à dos par force brute.
+
+    Explore toutes les combinaisons possibles pour maximiser le bénéfice
+    sous contrainte budgétaire.
+
+    Args:
+        capacite (float): Budget maximum en euros.
+        actions (list[tuple]): Liste de tuples (nom, coût, bénéfice).
+        elements_selection (list, optional): Actions déjà sélectionnées.
+
+    Returns:
+        tuple: (bénéfice_total, liste_actions_sélectionnées)
+
+    Complexity:
+        O(2^n) temps, O(n) espace.
+    """
     if actions: 
-        val1, listVal1 = algo_Force_Brute(capacite, actions[1:], elements_selection)
+        val1, listVal1 = algo_force_brute(capacite, actions[1:], elements_selection)
         objet = actions[0]     
         if objet[1] <= capacite:
-            val2, listVal2 = algo_Force_Brute(capacite - objet[1], actions[1:], elements_selection + [objet])
+            val2, listVal2 = algo_force_brute(capacite - objet[1], actions[1:], elements_selection + [objet])
             if val1 < val2:
                 return val2, listVal2
         return val1, listVal1
@@ -32,5 +48,5 @@ actions = [
     ("Action-19", 24, 21),
     ("Action-20", 114, 18)]
 
-print(f'Algorithme', algo_Force_Brute(500, actions))
+print(f'Algorithme', algo_force_brute(500, actions))
 
