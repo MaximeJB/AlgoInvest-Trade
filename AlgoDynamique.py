@@ -43,7 +43,7 @@ def read_dataset(path_file, facteur = FACTEUR):
     
     return df
 
-file_name = r"C:\Users\maxym\Documents\GitHub\Algo\dataset2_Python+P7.csv"
+file_name = r"dataset2_Python+P7.csv"
 data_ready = read_dataset(file_name, FACTEUR)
 elements = data_ready[['Action', 'Cout', 'Benefice']].values.tolist()
 capacite = int(500 * FACTEUR)
